@@ -8,9 +8,10 @@ module.exports = {
 ],
   theme: {
     extend: {
-      width:{
-        'a' : '30vw'
+      left:{
+        'c' : '32rem'
       },
+      
       height:{
         'b': '60vh'
       }
