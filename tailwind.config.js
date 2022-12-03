@@ -22,8 +22,6 @@ module.exports = {
       }
     },
   },
-  font: {
-    'nav': ['Bebas Neue '],
-  },
+  
   plugins: [],
 }
