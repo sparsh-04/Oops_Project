@@ -87,20 +87,22 @@
                         <option>Mexico</option>
                       </select>
                     </div>
-                    
+
+                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                      <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
+                      <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    </div>
+
 <div>
   <label for="country">Country</label>
   <select id="country">
       <option>select country</option>
   </select>
   </div>
-  
   <div>
   <label for="state">State</label>
   <span id="state-code"><input type="text" id="state"></span>
   </div>
-
-  
   <script>
   // user country code for selected option
   let user_country_code = "IN";
@@ -157,14 +159,6 @@
   })();
   
   </script>
-  
-                      
-      
-      
-                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
-                      <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                    </div>
                   </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
