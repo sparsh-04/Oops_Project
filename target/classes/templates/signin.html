@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Login-Page</title>
+</head>
+<body class="bg-slate-600 display:flex items-center ">
+  
+<form class=" bg-white mt-40 max-w-sm mx-auto rounded-lg shadow-xl overflow-hidden p-6 py-10 space-y-10" method="post" role="form" th:action="@{/login}">
+  <h1 class=" pl-20 pb-5 text-5xl font-semibold">Login</h1>
+  <div class="flex pb-6">
+    <h1 class="font-semibold text-2xl  pr-4">Email:</h1>
+    <input type = "email" id="username" name="username" placeholder="Enter email address" class="border-black bg-slate-300 rounded-md w-72 h-8">
+  </div>
+  <div class="flex pb-10">
+    <h1 class="font-semibold text-2xl pr-4">Password:</h1>
+    <input type = "password" id="password" name = "password" placeholder= "Enter password" class="border-black bg-slate-300 rounded-md w-64 h-8">
+  </div>
+  <button class="bg-slate-800 text-white hover:text-black hover:bg-slate-300 w-40 h-10 rounded-md">
+    LOGIN
+</button>
+  <h1 class="text-xs font-medium text-red-900 pl-40 hover:underline">FORGOT PASSWORD?</h1>
+  <div th:if="${param.error}">
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">Invalid Email or Password</div>
+</div>
+<div th:if="${param.logout}">
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"> You have been logged out.</div>
+</div>
+</form>
+</body>
+</html>
