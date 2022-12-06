@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.demo.DTO.UserDTO;
 
 @Controller
-public class NavigationComtroller {
+public class NavigationController {
     @GetMapping("")
     public String viewHomePage(Model model){
         return "index";

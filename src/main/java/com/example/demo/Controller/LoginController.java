@@ -35,7 +35,7 @@ public class LoginController {
 
         if(result.hasErrors()){
             model.addAttribute("user", userDto);
-            return "/signup";
+            return "signup";
         }
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -57,16 +57,16 @@ public class LoginController {
         User user = repo.findByEmail(auth.getName());
         switch (user.getRank()) {
             case CUSTOMER:
-                return "/Customer-Home";
+                return "redirect:/Customer-Home";
 
             case ADMIN:
-                return "/Admin-Home";
+                return "redirect:/Admin-Home";
             
             case MANAGER:
-                return "/Manager-Home";
+                return "redirect:/Manager-Home";
             
             default:
-                return "";
+                return "redirect:/";
         }
     }
 }
