@@ -63,16 +63,6 @@ public class Item {
     this.stock = stock;
   }
 
-  private int deliveryTime;
-
-  public int getDeliveryTime() {
-    return deliveryTime;
-  }
-
-  public void setDeliveryTime(int deliveryTime) {
-    this.deliveryTime = deliveryTime;
-  }
-
   private boolean available;
 
   public boolean getAvailable() {
@@ -94,13 +84,13 @@ public class Item {
   }
 
   @Enumerated(EnumType.STRING)
-  private ProductCatagory catagory;
+  private ProductCategory catagory;
 
-  public ProductCatagory getCatagory() {
+  public ProductCategory getCatagory() {
     return catagory;
   }
 
-  public void setCatagory(ProductCatagory catagory) {
+  public void setCatagory(ProductCategory catagory) {
     this.catagory = catagory;
   }
 }

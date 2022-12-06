@@ -29,9 +29,13 @@ public class UserDTO {
   @NotEmpty(message = "Confirm Password should not be empty")
   private String confirmPassword;
 
-  @AssertTrue(message = "Confirm Password and Password should are not same")
+  @AssertTrue(message = "Confirm Password and Password are not same")
   private boolean isPasswordSame() {
     return password.equals(confirmPassword);
-    
+  }
+
+  @AssertTrue(message = "Invalid Phone Number")
+  private boolean isPhoneValid() {
+    return phone > 1000000000;
   }
 }
