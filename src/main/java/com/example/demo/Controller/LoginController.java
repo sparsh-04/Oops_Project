@@ -12,8 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.DTO.UserDTO;
 import com.example.demo.Model.Rank;
@@ -21,21 +19,10 @@ import com.example.demo.Model.User;
 import com.example.demo.Repository.UserRepo;
 
 @Controller
-public class appcontroller {
+public class LoginController {
 
     @Autowired
     private UserRepo repo;
-    
-    @GetMapping("")
-    public String viewHomePage(){
-        return "index";
-    }
-
-    @GetMapping("/signup")
-    public String showSignUpForm(Model model) {
-        model.addAttribute("user", new UserDTO());
-        return "signup" ;
-    }
 
     @PostMapping("/process_register")
     public String processRegistration (@Valid @ModelAttribute("user") UserDTO userDto, BindingResult result, Model model){
@@ -63,28 +50,23 @@ public class appcontroller {
         repo.save(newUser);
         return "redirect:/signup?success";
         }
-
-    @RequestMapping(value = "/signin", method = RequestMethod.GET) 
-    public String displayLogin(Model model) { 
-        return "signin"; 
-    }
     
     @GetMapping(value = "/login_success")
-    public String goToHomePage(){
+    public String goToHome(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = repo.findByEmail(auth.getPrincipal().toString());
+        User user = repo.findByEmail(auth.getName());
         switch (user.getRank()) {
             case CUSTOMER:
-                return "Costumer";
+                return "/Customer-Home";
 
             case ADMIN:
-                return "Admin_HomePage";
+                return "/Admin-Home";
             
             case MANAGER:
-                return "Manager_Homepage";
+                return "/Manager-Home";
             
             default:
-                return "index";
+                return "";
         }
     }
 }

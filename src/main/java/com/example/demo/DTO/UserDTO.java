@@ -32,5 +32,6 @@ public class UserDTO{
   @AssertTrue(message = "Confirm Password and Password should are not same")
   private boolean isPasswordSame(){
     return password.equals(confirmPassword);
+    
   }
 }
