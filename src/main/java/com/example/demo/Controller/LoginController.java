@@ -24,7 +24,7 @@ public class LoginController {
     @Autowired
     private UserRepo repo;
 
-    @PostMapping("/process_register")
+    @PostMapping("/signup/process")
     public String processRegistration (@Valid @ModelAttribute("user") UserDTO userDto, BindingResult result, Model model){
         User existingUser = repo.findByEmail(userDto.getEmail());
 
@@ -51,7 +51,7 @@ public class LoginController {
         return "redirect:/signup?success";
         }
     
-    @GetMapping(value = "/login_success")
+    @GetMapping(value = "/login/success")
     public String goToHome(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = repo.findByEmail(auth.getName());
