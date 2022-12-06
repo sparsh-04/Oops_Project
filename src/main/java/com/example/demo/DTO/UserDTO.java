@@ -1,8 +1,8 @@
 package com.example.demo.DTO;
 
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO{
+public class UserDTO {
   @NotEmpty(message = "Email should not be empty")
   private String email;
 
@@ -30,7 +30,7 @@ public class UserDTO{
   private String confirmPassword;
 
   @AssertTrue(message = "Confirm Password and Password should are not same")
-  private boolean isPasswordSame(){
+  private boolean isPasswordSame() {
     return password.equals(confirmPassword);
     
   }
