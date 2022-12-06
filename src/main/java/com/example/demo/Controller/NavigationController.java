@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.demo.DTO.ItemDTO;
 import com.example.demo.DTO.UserDTO;
 
 @Controller
@@ -25,18 +26,24 @@ public class NavigationController {
     }
 
     
-    @GetMapping(value = "/Customer-Home")
-    public String goToCustomerHome(){
+    @GetMapping(value = "/Customer")
+    public String goToCustomerHome(Model model){
         return "Costumer";
     }
 
-    @GetMapping(value = "/Admin-Home")
-    public String goToAdminHome(){
+    @GetMapping(value = "/Admin")
+    public String goToAdminHome(Model model){
         return "Admin_HomePage";
     }
 
-    @GetMapping(value = "/Manager-Home")
-    public String goToManagerHome(){
+    @GetMapping(value = "/Manager")
+    public String goToManagerHome(Model model){
         return "Manager_Homepage";
+    }
+
+    @GetMapping(value = "/AddItem")
+    public String goToAddItemPage(Model model){
+        model.addAttribute("item", new ItemDTO());
+        return "Additem";
     }
 }

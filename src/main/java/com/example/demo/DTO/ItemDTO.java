@@ -31,4 +31,6 @@ public class ItemDTO {
   private int stock;
 
   private String offer;
+
+  private String description;
 }

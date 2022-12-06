@@ -57,13 +57,13 @@ public class LoginController {
         User user = repo.findByEmail(auth.getName());
         switch (user.getRank()) {
             case CUSTOMER:
-                return "redirect:/Customer-Home";
+                return "redirect:/Customer";
 
             case ADMIN:
-                return "redirect:/Admin-Home";
+                return "redirect:/Admin";
             
             case MANAGER:
-                return "redirect:/Manager-Home";
+                return "redirect:/Manager";
             
             default:
                 return "redirect:/";

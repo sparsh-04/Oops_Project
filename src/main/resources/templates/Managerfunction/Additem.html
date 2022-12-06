@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
     <title>Add Item</title>
 </head>
+
 <body>
     <nav id="headernav" class="flex absolute bg-slate-400 pt-4 h-16 w-full top-5">
         <button>
@@ -21,7 +22,7 @@
         <button
           class="bg-slate-700 rounded-3xl w-16 h-8 px-3 ml-20 text-white hover:bg-slate-200 hover:text-black"
         >
-          <a href="Costumer.html"> Home</a>
+          <a th:href="@{Manager}"> Home</a>
         </button>
         <button
           class="bg-slate-700 rounded-3xl w-28 h-8 px-3 mr-10 ml-12 text-white hover:bg-slate-200 hover:text-black"
@@ -220,29 +221,30 @@
           </div>
         </div>
       </nav>
+    <form th:action="@{/Add-Item/process}" th:object="${item}" method="post" >
       <div class="ml-80">
         <h1 class="text-3xl text-slate-700 font-bold mt-28 ml-96">Add Item</h1>
       </div>
       <div class="ml-28 mb-20 mt-14 flex">
         <h1 class="mr-32 font-semibold text-2xl text-slate-600">Name</h1>
-        <input class="rounded-md w-96 bg-slate-200 h-10" type="text">
+        <input class="rounded-md w-96 bg-slate-200 h-10" type="text" th:field="*{name}" required>
       </div>
       <div class="ml-28 mt-10 mb-20 flex">
         <h1 class="mr-32 font-semibold text-2xl text-slate-600">Price</h1>
-        <input class="rounded-md w-96 bg-slate-200 h-10 ml-3" type="text">
+        <input class="rounded-md w-96 bg-slate-200 h-10 ml-3" type="number" th:field="*{price}" required>
       </div>
       <div class="ml-28 mt-10 mb-20 flex">
         <h1 class="mr-32 font-semibold text-2xl text-slate-600">Offers</h1>
-        <input class="rounded-md w-96 mr-96 bg-slate-200 h-10" type="text">
+        <input class="rounded-md w-96 mr-96 bg-slate-200 h-10" type="text" th:field = "*{offer}">
         <h1 class=" mr-14 font-semibold text-2xl text-slate-600">Stock</h1>
-        <input class="rounded-md w-52 h-10 bg-slate-200 " type="text">
+        <input class="rounded-md w-52 h-10 bg-slate-200 " type="number" th:field="*{stock}" required>
       </div>
       <div class="ml-28 mt-10 mb-14 flex">
-        <h1 class="mr-20 font-semibold text-2xl text-slate-600">Discription</h1>
-        <textarea name="" id="" cols="30" rows="10" class="rounded-md w-96 h-32 bg-slate-200 text-gray-900  border border-black p-3 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+        <h1 class="mr-20 font-semibold text-2xl text-slate-600">Description</h1>
+        <textarea name="" id="" cols="30" rows="10" class="rounded-md w-96 h-32 bg-slate-200 text-gray-900  border border-black p-3 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" th:field="*{description}"></textarea>
         
         <div class="form-check ml-96 font-semibold text-2xl">
-          <input class=" ml-5 form-check-input appearance-none h-7 w-7 border mr-8 border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left  cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+          <input class=" ml-5 form-check-input appearance-none h-7 w-7 border mr-8 border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left  cursor-pointer" type="checkbox" value="" id="flexCheckDefault" th:checked="*{available}">
           <label class=" form-check-label inline-block text-gray-800" for="flexCheckDefault">
             Available
           </label>
@@ -251,6 +253,7 @@
       <div class="ml-80">
         <button class="bg-slate-500 hover:bg-slate-300 w-32 h-12 rounded-md ml-96 text-3xl font-bold">Submit</button>
       </div>
+      </form>
       <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 </body>
 </html>
