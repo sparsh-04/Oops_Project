@@ -1,14 +1,24 @@
 package com.example.demo.Controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.DTO.ItemDTO;
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.Model.Item;
+import com.example.demo.Repository.ItemRepo;
 
 @Controller
 public class NavigationController {
+    @Autowired
+    private ItemRepo itemRepo;
+
+    private List<Item> itemList;
+
     @GetMapping("")
     public String viewHomePage(Model model){
         return "index";
@@ -38,6 +48,8 @@ public class NavigationController {
 
     @GetMapping(value = "/Manager")
     public String goToManagerHome(Model model){
+        itemList = itemRepo.findAll();
+        model.addAttribute("items", itemList);
         return "Manager_Homepage";
     }
 
