@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 @Table(name = "ordersPlaced")
 public class Order {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   public Long getId() {

@@ -9,6 +9,11 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Customer {
+
+  public Customer(long id){
+    this.id = id;
+  }
+
   @Id
   private Long id;
 

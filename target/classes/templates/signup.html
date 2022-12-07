@@ -40,12 +40,12 @@
             SIGN-UP
         </button>
         <button class=" text-black">
-            Already a customer? <a class="text-blue-800 hover:underline" href="signin">Login</a>
+            Already a customer? <a class="text-blue-800 hover:underline" th:href="@{signin}">Login</a>
         </button>
 
         <div th:if="${#fields.hasAnyErrors()}">
             <ul>
-                <li th:each="err : ${#fields.allErrors()}" th:text="${err}${#field}" />
+                <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
             </ul>
         </div>
         

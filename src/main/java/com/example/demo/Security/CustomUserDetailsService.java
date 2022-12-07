@@ -1,9 +1,10 @@
 package com.example.demo.Security;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,9 +30,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     if (user == null) {
       throw new UsernameNotFoundException("User not found");
     }
+    List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
+    list.add(new SimpleGrantedAuthority("ROLE_" + user.getRank().toString()));
+    System.out.println(list);
     return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
-    Stream.empty().map((role) -> new SimpleGrantedAuthority(user.getRank().toString())).collect(Collectors.toList())
-    );
+    list);
   }
   
 }
