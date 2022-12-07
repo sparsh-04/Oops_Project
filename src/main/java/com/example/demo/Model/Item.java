@@ -20,7 +20,7 @@ import lombok.Setter;
 @Entity
 public class Item {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long code;
 
   @Column(unique = true, nullable = false)

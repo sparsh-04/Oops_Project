@@ -1,5 +1,6 @@
 package com.example.demo.DTO;
 
+import com.example.demo.Model.ProductCategory;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 
@@ -24,8 +25,7 @@ public class ItemDTO {
   @NotEmpty(message = "Image cannot be empty")
   private String imageUrl;
 
-  @NotEmpty(message = "Category cannot be empty")
-  private String category;
+  private ProductCategory category;
 
   private int stock;
 

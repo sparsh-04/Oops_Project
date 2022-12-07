@@ -228,10 +228,16 @@
       <div class="ml-28 mb-20 mt-14 flex">
         <h1 class="mr-32 font-semibold text-2xl text-slate-600">Name</h1>
         <input class="rounded-md w-96 bg-slate-200 h-10" type="text" th:field="*{name}" required>
+        <h1 class="ml-11 mr-14 font-semibold text-2xl text-slate-600">Category</h1>
+        <select th:field="*{category}">
+          <option th:each="c : ${T(com.example.demo.Model.ProductCategory).values()}" th:value="${c}" th:text="${c.getDisplayValue()}"></option>
+        </select>
       </div>
       <div class="ml-28 mt-10 mb-20 flex">
         <h1 class="mr-32 font-semibold text-2xl text-slate-600">Price</h1>
-        <input class="rounded-md w-96 bg-slate-200 h-10 ml-3" type="number" th:field="*{price}" required>
+        <input class="rounded-md w-96 bg-slate-200 h-10 ml-3" type="number" th:field="*{price}" required step="0.01" min = "0.0">
+        <h1 class="mr-32 font-semibold text-2xl text-slate-600">Image URL</h1>
+        <input class="rounded-md w-96 mr-96 bg-slate-200 h-10" type="text" th:field = "*{imageUrl}">
       </div>
       <div class="ml-28 mt-10 mb-20 flex">
         <h1 class="mr-32 font-semibold text-2xl text-slate-600">Offers</h1>
@@ -252,6 +258,11 @@
       </div>
       <div class="ml-80">
         <button class="bg-slate-500 hover:bg-slate-300 w-32 h-12 rounded-md ml-96 text-3xl font-bold">Submit</button>
+        <div th:if="${#fields.hasAnyErrors()}">
+          <ul>
+              <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+          </ul>
+      </div>
       </div>
       </form>
       <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
