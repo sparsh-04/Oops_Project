@@ -53,7 +53,7 @@ public class UserController {
       newUser.setName(userDto.getName());
       userRepo.save(newUser);
       User savedUser = userRepo.findByEmail(userDto.getEmail());
-      if(savedUser.getRank().equals(Rank.ADMIN)){
+      if(savedUser.getRank().getDisplayValue().equals(Rank.CUSTOMER.getDisplayValue())){
           customerRepo.save(new Customer(savedUser.getId()));
       }
       return "redirect:/Admin/Users";
