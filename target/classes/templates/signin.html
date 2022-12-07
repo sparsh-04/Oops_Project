@@ -12,6 +12,9 @@
   
 <form class=" bg-white mt-40 max-w-sm mx-auto rounded-lg shadow-xl overflow-hidden p-6 py-10 space-y-10" method="post" role="form" th:action="@{/login}">
   <h1 class=" pl-20 pb-5 text-5xl font-semibold">Login</h1>
+  <div th:if="${param.signupSuccess}">
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded"> New Account Created.</div>
+</div>
   <div class="flex pb-6">
     <h1 class="font-semibold text-2xl  pr-4">Email:</h1>
     <input type = "email" id="username" name="username" placeholder="Enter email address" class="border-black bg-slate-300 rounded-md w-72 h-8">
@@ -23,7 +26,7 @@
   <button class="bg-slate-800 text-white hover:text-black hover:bg-slate-300 w-40 h-10 rounded-md">
     LOGIN
 </button>
-  <h1 class="text-xs font-medium text-red-900 pl-40 hover:underline">FORGOT PASSWORD?</h1>
+  <a th:href="@{/signup}"><h1 class="text-xs font-medium text-red-900 pl-40 hover:underline">Create a new account</h1>
   <div th:if="${param.error}">
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">Invalid Email or Password</div>
 </div>

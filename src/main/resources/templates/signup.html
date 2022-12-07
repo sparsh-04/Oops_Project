@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Login-Page</title>
+    <title>Signup</title>
 </head>
 
 <body class="bg-slate-600">
     <form th:action="@{/signup/process}" th:object="${user}" method="post" class=" bg-white mt-40 mb-40 max-w-lg mx-auto rounded-lg shadow-xl overflow-hidden p-6 py-10 space-y-10">
-
+        <h1 class=" pl-20 pb-5 text-5xl font-semibold">Signup</h1>
         <div class="flex pb-10">
             <h1 class="font-semibold text-2xl  pr-4">Username:</h1>
             <input type="text" th:field="*{name}" class="border-black bg-slate-300 rounded-md w-72 h-8" required>
@@ -43,9 +43,13 @@
             Already a customer? <a class="text-blue-800 hover:underline" th:href="@{signin}">Login</a>
         </button>
 
+        <div th:if="${param.error}">
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">Invalid Email or Password</div>
+        </div>
+
         <div th:if="${#fields.hasAnyErrors()}">
             <ul>
-                <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                <li class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded" th:each="err : ${#fields.errors()}" th:text="${err}" />
             </ul>
         </div>
         
