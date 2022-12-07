@@ -14,19 +14,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.Model.Customer;
 import com.example.demo.Model.Rank;
 import com.example.demo.Model.User;
+import com.example.demo.Repository.CustomerRepo;
 import com.example.demo.Repository.UserRepo;
 
 @Controller
 public class LoginController {
 
     @Autowired
-    private UserRepo repo;
+    private UserRepo userRepo;
+
+    @Autowired
+    private CustomerRepo customerRepo;
 
     @PostMapping("/signup/process")
     public String processRegistration (@Valid @ModelAttribute("user") UserDTO userDto, BindingResult result, Model model){
-        User existingUser = repo.findByEmail(userDto.getEmail());
+        User existingUser = userRepo.findByEmail(userDto.getEmail());
 
         if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
             result.rejectValue("email", null,
@@ -47,14 +52,16 @@ public class LoginController {
         newUser.setPhone(userDto.getPhone());
         newUser.setEmail(userDto.getEmail());
         newUser.setName(userDto.getName());
-        repo.save(newUser);
+        userRepo.save(newUser);
+        User savedUser = userRepo.findByEmail(userDto.getEmail());
+        customerRepo.save(new Customer(savedUser.getId()));
         return "redirect:/signup?success";
         }
     
     @GetMapping(value = "/login/success")
     public String goToHome(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = repo.findByEmail(auth.getName());
+        User user = userRepo.findByEmail(auth.getName());
         switch (user.getRank()) {
             case CUSTOMER:
                 return "redirect:/Customer";

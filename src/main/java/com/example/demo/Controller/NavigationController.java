@@ -41,9 +41,9 @@ public class NavigationController {
         return "Manager_Homepage";
     }
 
-    @GetMapping(value = "/AddItem")
+    @GetMapping(value = "/Add-Item")
     public String goToAddItemPage(Model model){
         model.addAttribute("item", new ItemDTO());
-        return "Additem";
+        return "Manager/Additem";
     }
 }
