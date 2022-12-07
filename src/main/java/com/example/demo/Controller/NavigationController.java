@@ -59,9 +59,14 @@ public class NavigationController {
         return "Manager/Additem";
     }
 
-    @GetMapping(value = "/adduser")
+    @GetMapping(value = "/Admin/Add-User")
     public String goToAddUserPage(Model model){
         model.addAttribute("user" , new UserDTO());
         return "Admin/adduser";
+    }
+
+    @GetMapping(value = "/Customer-Support")
+    public String goToCustomerSupport(Model model){
+        return "Customerservice";
     }
 }
