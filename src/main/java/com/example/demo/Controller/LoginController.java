@@ -48,13 +48,13 @@ public class LoginController {
         User newUser = new User();
         String encodedpassword = encoder.encode(userDto.getPassword());
         newUser.setPassword(encodedpassword);
-        newUser.setRank(Rank.CUSTOMER);
+        newUser.setRank(Rank.ADMIN);
         newUser.setPhone(userDto.getPhone());
         newUser.setEmail(userDto.getEmail());
         newUser.setName(userDto.getName());
         userRepo.save(newUser);
         User savedUser = userRepo.findByEmail(userDto.getEmail());
-        if(savedUser.getRank().equals(Rank.CUSTOMER)){
+        if(savedUser.getRank().equals(Rank.ADMIN)){
             customerRepo.save(new Customer(savedUser.getId()));
         }
         return "redirect:/signin?signupSuccess";

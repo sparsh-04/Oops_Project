@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Add_User</title>
+</head>
+
+<body class="bg-slate-600">
+    <form th:action="@{/Admin/AddUser/process}" th:object="${user}" method="post" class=" bg-white mt-40 mb-40 max-w-lg mx-auto rounded-lg shadow-xl overflow-hidden p-6 py-10 space-y-10">
+        <h1 class=" pl-20 pb-5 text-5xl font-semibold">ADD USER</h1>
+        <div class="flex pb-10">
+            <h1 class="font-semibold text-2xl  pr-4">Username:</h1>
+            <input type="text" th:field="*{name}" class="border-black bg-slate-300 rounded-md w-72 h-8" required>
+        </div>
+
+        <div class="flex pb-6">
+            <h1 class="font-semibold text-2xl  pr-4">Email:</h1>
+            <input type="email" th:field="*{email}" class="border-black ml-12 bg-slate-300 rounded-md w-72 h-8" required>
+          </div>
+
+        <div class="flex pb-10">
+            <h1 class="font-semibold text-2xl  pr-4">Phone:</h1>
+            <input type="tel" th:field="*{phone}" class="border-black ml-10 bg-slate-300 rounded-md w-72 h-8" minlength="10" maxlength="10">
+        </div>
+        
+        <div class="flex pb-10">
+            <h1 class="font-semibold text-2xl pr-4">Password:</h1>
+            <input type="password" th:field="*{password}" class="border-black ml-2 bg-slate-300 rounded-md w-72 h-8" minlength="6" maxlength="12" >
+          </div>
+
+        <div class="flex pb-10">
+            <h1 class="font-semibold text-2xl  pr-4">Confirm:</h1>
+            <input type="password" th:field="*{confirmPassword}" class="border-black ml-5 bg-slate-300 rounded-md w-72 h-8" minlength="6" maxlength="12">
+        </div>
+        <!-- <h1 class="ml-11 mr-14 font-semibold text-2xl text-slate-600">Rank</h1> -->
+      <select  th:field="*{rank}">
+        <option th:each="c : ${T(com.example.demo.Model.Rank).values()}" th:value="${c}"
+          th:text="${c.getDisplayValue()}"></option>
+      </select>
+        <button type = "submit" class = "bg-slate-800 text-white hover:text-black hover:bg-slate-300 w-40 h-10 rounded-md ml-10 mr-20">
+            SIGN-UP
+        </button>
+
+        <div th:if="${param.error}">
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">Invalid Email or Password</div>
+        </div>
+
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded" th:each="err : ${#fields.errors()}" th:text="${err}" />
+            </ul>
+        </div>
+        
+        
+        
+      </form>
+</body>
+</html>

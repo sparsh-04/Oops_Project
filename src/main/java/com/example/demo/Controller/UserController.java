@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.Model.Customer;
 import com.example.demo.Model.Rank;
 import com.example.demo.Model.User;
+import com.example.demo.Repository.CustomerRepo;
 import com.example.demo.Repository.UserRepo;
 
 import jakarta.validation.Valid;
@@ -21,34 +23,40 @@ import jakarta.validation.Valid;
 public class UserController {
 
     @Autowired
-    private UserRepo repo;
-    
-    @PostMapping(value = "/Admin/Add-User")
-    public String adduser(@Valid @ModelAttribute("user") UserDTO userDto, BindingResult result, Model model){
-    User existingUser = repo.findByEmail(userDto.getEmail());
+    private UserRepo userRepo;
 
-    if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
-      result.rejectValue("name", null, "There is already a user registered with the same email ID");
-    }
-  
-    if(result.hasErrors()){
-      model.addAttribute("user", userDto);
-      return "/Admin/Add-User";
-    }
+  @Autowired
+  private CustomerRepo customerRepo;
 
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+  @PostMapping("/Admin/AddUser/process")
+  public String processRegistration (@Valid @ModelAttribute("user") UserDTO userDto, BindingResult result, Model model){
+      User existingUser = userRepo.findByEmail(userDto.getEmail());
 
-    User newUser = new User();
-    String encodedpassword = encoder.encode(userDto.getPassword());
+      if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
+          result.rejectValue("email", null,
+                  "There is already an account registered with the same email");
+      }
 
-    newUser.setPassword(encodedpassword);
-    newUser.setRank(Rank.CUSTOMER);
-    newUser.setPhone(userDto.getPhone());
-    newUser.setEmail(userDto.getEmail());
-    newUser.setName(userDto.getName());
-    newUser.setRank(Rank.ADMIN);
-    repo.save(newUser);
-    return "redirect:/Admin";
+      if(result.hasErrors()){
+          model.addAttribute("user", userDto);
+          return "adduser";
+      }
+
+      BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+      User newUser = new User();
+      String encodedpassword = encoder.encode(userDto.getPassword());
+      newUser.setPassword(encodedpassword);
+      newUser.setRank(userDto.getRank());
+      newUser.setPhone(userDto.getPhone());
+      newUser.setEmail(userDto.getEmail());
+      newUser.setName(userDto.getName());
+      userRepo.save(newUser);
+      User savedUser = userRepo.findByEmail(userDto.getEmail());
+      if(savedUser.getRank().equals(Rank.ADMIN)){
+          customerRepo.save(new Customer(savedUser.getId()));
+      }
+      return "redirect:/Admin/Users";
   }
 
 }
