@@ -55,9 +55,11 @@ public class LoginController {
         newUser.setName(userDto.getName());
         userRepo.save(newUser);
         User savedUser = userRepo.findByEmail(userDto.getEmail());
-        customerRepo.save(new Customer(savedUser.getId()));
-        return "redirect:/signup?success";
+        if(savedUser.getRank().equals(Rank.CUSTOMER)){
+            customerRepo.save(new Customer(savedUser.getId()));
         }
+        return "redirect:/signin?signupSuccess";
+    }
     
     @GetMapping(value = "/login/success")
     public String goToHome(){
