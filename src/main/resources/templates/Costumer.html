@@ -14,22 +14,22 @@
   <nav id="headernav" class="flex absolute bg-slate-400 pt-4 h-16 w-full top-5">
     <button><img
         class="w-9 h-9 rounded-full object-cover bottom-4 right-10 absolute"
-        src="/profile_placeholder.jpg"
+        th:src="@{/images/profile_placeholder.jpg}"
         alt="profile placeholder"
       />
     </button>
     <button
       class="bg-slate-700 rounded-3xl w-16 h-8 px-3 ml-20 text-white hover:bg-slate-200 hover:text-black"
     >
-      <a th:href="@{/Customer-Home}"> Home</a>
+      <a th:href="@{/Customer}"> Home</a>
     </button>
     <button
-      class="bg-slate-700 rounded-3xl w-20 h-8 px-3 mr-10 ml-12 text-white hover:bg-slate-200 hover:text-black"
+      class="bg-slate-700 rounded-3xl w-20 h-8 px-3 mr-10 ml-12 text-white hover:bg-slate-200 hover:text-black" th:href="@{/Customer/Wishlist}"
     >
       Wishlist
     </button>
     <button
-      class="bg-slate-700 rounded-3xl w-24 h-8 px-3 mr-10 ml-3 text-white hover:bg-slate-200 hover:text-black"
+      class="bg-slate-700 rounded-3xl w-24 h-8 px-3 mr-10 ml-3 text-white hover:bg-slate-200 hover:text-black" th:href="@{/Customer/Cart}"
     >
       My cart
     </button>
@@ -42,7 +42,7 @@
         aria-controls="drawer-navigation"
         onclick="openNav()"
       >
-      <img src="/Users/sparshkhandelwal/Downloads/c language/Oops_Project/Oops_Project/icons8-menu-50.png" alt="">
+      <img th:src="@{/images/icons8-menu-50.png}" alt="">
       </button>
     </div>
   
@@ -224,7 +224,7 @@
    <div id="wholepage" class="justify-end flex mt-24 ">
         <div>
         <button class=" hover:text-slate-500 font-sans mr-5">
-          <a href="/Customerservice.html">Help & Support</a> 
+          <a th:href="@{/Customer-Support}">Help & Support</a> 
         </button>
       </div>
     </div>  
