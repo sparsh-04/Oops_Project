@@ -50,6 +50,6 @@ public class NavigationController {
     @GetMapping(value = "/adduser")
     public String goToAddUserPage(Model model){
         model.addAttribute("user" , new UserDTO());
-        return "Admin/adduser";
+        return "Admin/AddUser";
     }
 }
