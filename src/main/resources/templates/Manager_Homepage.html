@@ -229,7 +229,7 @@
      <div id="wholepage" class="justify-end flex mt-10 ">
           <div>
           <button class=" hover:text-slate-500 font-sans mr-5">
-            <a href="/Customerservice.html">Help & Support</a> 
+            <a th:href="@{/Customer-Support}">Help & Support</a> 
           </button>
         </div>
        
@@ -250,12 +250,10 @@
                         </a>
                     </div>
                     <div class="flex-auto px-1 pt-6">
-                        <a href="javascript:;">
-                            <h5 th:value="${item.name}"></h5>
-                        </a>
+                        <h5 th:text="${item.name}"></h5>
   
-                        <div class="flex items-center justify-between ">
-                            <h1 class="font-bold" th:value="${item.price}">Rs 69</h1>
+                        <div class="flex items-center">
+                          <h1 class="mr-5">Rs. </h1><h1 class="font-bold" th:text="${item.price}"></h1>
                         </div>
                     </div>
                 </div>
