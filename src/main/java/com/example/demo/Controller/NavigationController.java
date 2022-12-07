@@ -58,4 +58,10 @@ public class NavigationController {
         model.addAttribute("item", new ItemDTO());
         return "Manager/Additem";
     }
+
+    @GetMapping(value = "/adduser")
+    public String goToAddUserPage(Model model){
+        model.addAttribute("user" , new UserDTO());
+        return "Admin/adduser";
+    }
 }

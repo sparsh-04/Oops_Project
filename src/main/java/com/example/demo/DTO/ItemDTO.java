@@ -1,8 +1,6 @@
 package com.example.demo.DTO;
 
 import com.example.demo.Model.ProductCategory;
-
-import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 
