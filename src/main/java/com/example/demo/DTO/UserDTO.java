@@ -1,5 +1,7 @@
 package com.example.demo.DTO;
 
+import com.example.demo.Model.Rank;
+
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
@@ -28,6 +30,8 @@ public class UserDTO {
 
   @NotEmpty(message = "Confirm Password should not be empty")
   private String confirmPassword;
+
+  private Rank rank;
 
   @AssertTrue(message = "Confirm Password and Password are not same")
   private boolean isPasswordSame() {

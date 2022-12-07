@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.demo.DTO.ItemDTO;
 import com.example.demo.DTO.UserDTO;
 import com.example.demo.Model.Item;
+import com.example.demo.Model.User;
 import com.example.demo.Repository.ItemRepo;
 
 @Controller
