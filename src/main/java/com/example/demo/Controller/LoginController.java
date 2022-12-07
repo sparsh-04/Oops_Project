@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.DTO.UserDTO;
@@ -48,7 +49,7 @@ public class LoginController {
         newUser.setEmail(userDto.getEmail());
         newUser.setName(userDto.getName());
         repo.save(newUser);
-        return "redirect:/signup?success";
+        return "redirect:/registration_success";
         }
     
     @GetMapping(value = "/login/success")
@@ -69,4 +70,5 @@ public class LoginController {
                 return "redirect:/";
         }
     }
+
 }
