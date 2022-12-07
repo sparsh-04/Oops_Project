@@ -23,7 +23,7 @@
   <button class="bg-slate-800 text-white hover:text-black hover:bg-slate-300 w-40 h-10 rounded-md">
     LOGIN
 </button>
-  <h1 class="text-xs font-medium text-red-900 pl-40 hover:underline">FORGOT PASSWORD?</h1>
+  <a th:href="@{/signup}"><h1 class="text-xs font-medium text-red-900 pl-40 hover:underline">Create a new account</h1>
   <div th:if="${param.error}">
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">Invalid Email or Password</div>
 </div>
