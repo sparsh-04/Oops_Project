@@ -1,5 +1,8 @@
 package com.example.demo.Model;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class CartItem {
   public CartItem(){
     this.quantity = 0;

@@ -33,14 +33,14 @@
       </button>
       <div class="text-center">
         <button
-          class="text-white focus:ring-4 focus:ring-blue-300 absolute left-1 font-medium rounded-lg text-sm ml-3 w-10 h-8 px-2 object-cover hover:bg-slate-500  dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          class="text-white focus:ring-4 focus:ring-blue-300 absolute left-1 font-medium rounded-lg text-sm ml-3 w-10 h-8 px-2 object-cover hover:bg-slate-500  dark:hover:bg-grey-700 focus:outline-none dark:focus:ring-blue-800"
           type="button"
           data-drawer-target="drawer-navigation"
           data-drawer-show="drawer-navigation"
           aria-controls="drawer-navigation"
           onclick="openNav()"
         >
-        <img src="/Users/sparshkhandelwal/Downloads/c language/Oops_Project/Oops_Project/icons8-menu-50.png" alt="">
+        <img th:src="@{/images/Hamburger_icon.svg.png}" alt="">
         </button>
       </div>
     
@@ -199,7 +199,7 @@
       </div>
     </nav>
     <div class="justify-center ml-96">
-    <h1 class="text-4xl mt-28 ml- font-bold">Manager Service Page</h1>
+    <h1 class="text-4xl mt-28 ml-20 font-bold">Manager Service Page</h1>
      </div>
      <div id="wholepage" class="justify-end flex mt-10 ">
           <div>
@@ -208,20 +208,29 @@
           </button>
         </div>
        
-        <div>
-          <button class=" hover:text-slate-500 font-sans mr-5 "> 
-          Login / Register
-          </button>
-        </div>
+        
       </div>  
   
+      <div class="absolute left-69 px-36 top-24">
+        <div th:if="${param.deleteSuccess}">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded"> Item Deleted Successfully </div>
+        </div>
+    
+        <div th:if="${param.addSuccess}">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded"> Item Added Successfully </div>
+        </div>
+    
+        <div th:if="${param.noexist}">
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"> Item doesn't exist</div>
+        </div>
+    </div>
         
         <div class="flex flex-wrap  removable">
             <button class="w-full max-w-full px-3 mb-6 lg:w-1/3 sm:flex-none shadow-lg " th:each="item: ${items}">
                 <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
                     <div class="relative">
                         <a class="block  rounded-2xl" th:href="@{/Manager/Item?id={id}(id=${item.code})}">
-                            <img th:src="@{${item.imageUrl}}" alt="img-blur-shadow" class="max-w-full h-80 rounded-2xl hover:opacity-60">
+                            <img th:src="@{${item.imageUrl}}" alt="img-blur-shadow" class="max-w-full h-80 ml-20 rounded-2xl hover:opacity-60">
                         </a>
                     </div>
                     <div class="flex-auto px-1 pt-6">
@@ -243,11 +252,11 @@
                     <div class="flex-auto px-1 pt-6">
                         <p class="relative z-10 mb-2 leading-normal text-transparent bg-gradient-dark-gray text-size-sm bg-clip-text">Headmaw</p>
                         <a href="javascript:;">
-                            <h5>by Lucien Roberto</h5>
+                            <h5>Skull Art</h5>
                         </a>
   
                         <div class="flex items-center justify-between">
-                          <h1 class="font-bold">Rs 69</h1>
+                          <h1 class="font-bold">Rs 30000</h1>
                         </div>
                     </div>
                 </div>
@@ -263,36 +272,17 @@
                     <div class="flex-auto px-1 pt-6">
                         <p class="relative z-10 mb-2 leading-normal text-transparent bg-gradient-dark-gray text-size-sm bg-clip-text">Sonte of Vincento</p>
                         <a href="javascript:;">
-                            <h5>By Serierre Laumen</h5>
+                            <h5>Human Portrait</h5>
                         </a>
   
                         <div class="flex items-center justify-between">
-                          <h1 class="font-bold">Rs 69</h1>
+                          <h1 class="font-bold">Rs 4000</h1>
   
                         </div>
                     </div>
                 </div>
             </button>
-            <button class="w-full max-w-full px-3 mb-6 lg:w-1/3 sm:flex-none shadow-lg">
-                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
-                    <div class="relative">
-                        <a class="block rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1587333383258-bca5d8b58914?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODR8fGFuaW1hdGlvbnxlbnwwfDB8MHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="img-blur-shadow" class="max-w-full shadow-soft-2xl h-80 rounded-2xl hover:opacity-60">
-                        </a>
-                    </div>
-                    <div class="flex-auto px-1 pt-6">
-                        <p class="relative z-10 mb-2 leading-normal text-transparent bg-gradient-dark-gray text-size-sm bg-clip-text">Camera</p>
-                        <a href="javascript:;">
-                            <h5>By Loopple</h5>
-                        </a>
-  
-                        <div class="flex items-center justify-between">
-                          <!-- <h1 class="font-bold" th:value="${item.price}">Rs 69</h1> -->
-  
-                        </div>
-                    </div>
-                </div>
-            </button>
+           
             <button class="w-full max-w-full px-3 mb-6 lg:w-1/3 sm:flex-none shadow-lg ">
                 <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
                     <div class="relative">
@@ -303,11 +293,11 @@
                     <div class="flex-auto px-1 pt-6">
                         <p class="relative z-10 mb-2 leading-normal text-transparent bg-gradient-dark-gray text-size-sm bg-clip-text">Stones</p>
                         <a href="javascript:;">
-                            <h5>By Chris Karl</h5>
+                            <h5>Dark</h5>
                         </a>
   
                         <div class="flex items-center justify-between">
-                          <h1 class="font-bold">Rs 69</h1>
+                          <h1 class="font-bold">Rs. 5000</h1>
   
                         </div>
                     </div>
@@ -324,11 +314,11 @@
                     <div class="flex-auto px-1 pt-6">
                         <p class="relative z-10 mb-2 leading-normal text-transparent bg-gradient-dark-gray text-size-sm bg-clip-text">Robsol</p>
                         <a href="javascript:;">
-                            <h5>By Alien Jullie</h5>
+                            <h5>Point</h5>
                         </a>
   
                         <div class="flex items-center justify-between">
-                          <h1 class="font-bold">Rs 69</h1>
+                          <h1 class="font-bold">Rs 2000</h1>
   
                         </div>
                     </div>
@@ -337,7 +327,7 @@
           </button>
         </div>
         <footer id="custfooter" class="text-center -ml-10 mt-5 text-white " style="background-color: #f1f1f1;">
-          <div class="container pt-9">
+          <div class="container pt-9 ml-7">
             <div class="flex justify-center mb-9">
               <a href="#!" class="mr-9 text-gray-800">
                 <svg
@@ -445,8 +435,8 @@
           </div>
         
           <div class="text-center text-gray-700 p-4" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2021 Copyright:
-            <a class="text-gray-800" href="https://tailwind-elements.com/">Tailwind Elements</a>
+            © 2022:
+            <a class="text-gray-800" href="https://tailwind-elements.com/">WIND CART</a>
           </div>
         </footer>
       

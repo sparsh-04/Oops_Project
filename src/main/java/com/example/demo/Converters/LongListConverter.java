@@ -25,6 +25,9 @@ public class LongListConverter implements AttributeConverter<List<Long>, String>
     List<String> inList = Arrays.asList(string.split(SPLIT_CHAR));
     List<Long> outList = new ArrayList<Long>(inList.size());
     for (String item : inList) {
+      if(item.equals("")){
+        return outList;
+      }
       outList.add(Long.valueOf(item));
     }
     return outList;

@@ -23,16 +23,12 @@
     >
       <a th:href="@{/Customer}"> Home</a>
     </button>
+    <a th:href="@{/Customer/Cart}">
     <button
-      class="bg-slate-700 rounded-3xl w-20 h-8 px-3 mr-10 ml-12 text-white hover:bg-slate-200 hover:text-black" th:href="@{/Customer/Wishlist}"
-    >
-      Wishlist
-    </button>
-    <button
-      class="bg-slate-700 rounded-3xl w-24 h-8 px-3 mr-10 ml-3 text-white hover:bg-slate-200 hover:text-black" th:href="@{/Customer/Cart}"
+      class="bg-slate-700 rounded-3xl w-24 h-8 px-3 mr-10 ml-3 text-white hover:bg-slate-200 hover:text-black"
     >
       My cart
-    </button>
+    </button></a>
     <div class="text-center">
       <button
         class="text-white focus:ring-4 focus:ring-blue-300 absolute left-1 font-medium rounded-lg text-sm ml-3 w-10 h-8 px-2 object-cover hover:bg-slate-500  dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
@@ -228,14 +224,18 @@
         </button>
       </div>
     </div>  
-
+    <div class="absolute left-69 px-36 top-24">
+      <div th:if="${param.notacustomer}">
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"> You are not a customer</div>
+      </div>
+  </div>
       
       <div class="flex flex-wrap  removable">
         <button class="w-full max-w-full px-3 mb-6 lg:w-1/3 sm:flex-none shadow-lg " th:each="item: ${items}">
           <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
               <div class="relative">
                   <a class="block rounded-2xl" th:href="@{/Customer/Item?id={id}(id=${item.code})}">
-                      <img th:src="@{${item.imageUrl}}" alt="img-blur-shadow" class="max-w-full h-80 rounded-2xl hover:opacity-60">
+                      <img th:src="@{${item.imageUrl}}" alt="img-blur-shadow" class="max-w-full h-80 object-cover overflow-hidden rounded-2xl hover:opacity-60">
                   </a>
               </div>
               <div class="flex-auto px-1 pt-6">
