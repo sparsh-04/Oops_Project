@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.DTO.ItemDTO;
 import com.example.demo.DTO.UserDTO;
@@ -46,6 +44,8 @@ public class NavigationController {
     
     @GetMapping(value = "/Customer")
     public String goToCustomerHome(Model model){
+        itemList = itemRepo.findAll();
+        model.addAttribute("items", itemList);
         return "Costumer";
     }
 
@@ -61,7 +61,7 @@ public class NavigationController {
         return "Manager_Homepage";
     }
 
-    @GetMapping(value = "Manager/Add-Item")
+    @GetMapping(value = "/Manager/Add-Item")
     public String goToAddItemPage(Model model){
         model.addAttribute("item", new ItemDTO());
         return "Manager/Additem";
@@ -85,25 +85,40 @@ public class NavigationController {
     return "Userlist";
   }
   
-  @GetMapping("/Manager/Item/{ItemId}")
-  public String showItemDesc(Model model, @PathVariable(value="itemId") long id){
-    User user = userRepo.findById(id).orElse(null);
-    if(user == null){
-        return "userinfo?noexist";
+  @GetMapping("/Customer/Item")
+  public String showItemDescCustomer(Model model, @RequestParam(required = false, value="id") Long id){
+    Item item;
+    if(id != null){
+    item = itemRepo.findById(id).orElse(null);
+    } else {
+        item = null;
+    }
+    model.addAttribute("item", item);
+    return "iteminfocustomer";
+  }
+
+  @GetMapping("/Manager/Item")
+  public String showItemDescManager(Model model, @RequestParam(required = false, value="id") Long id){
+    Item item;
+    if(id != null){
+    item = itemRepo.findById(id).orElse(null);
+    } else {
+        item = null;
+    }
+    model.addAttribute("item", item);
+    return "iteminfomanager";
+  }
+
+  @GetMapping("/Admin/User")
+  public String showUserDesc(Model model, @RequestParam(required = false, value="id") Long id){
+    User user;
+    if(id != null){
+    user = userRepo.findById(id).orElse(null);
+    } else {
+        user = null;
     }
     model.addAttribute("user", user);
 
     return "userinfo";
-  }
-
-  @GetMapping("/Admin/User/{UserId}")
-  public String showDesc(Model model, @PathVariable(value="itemId") long id){
-    Item item = itemRepo.findById(id).orElse(null);
-    if(item == null){
-        return "iteminfo?noexist";
-    }
-    model.addAttribute("item", item);
-
-    return "iteminfo";
   }
 }

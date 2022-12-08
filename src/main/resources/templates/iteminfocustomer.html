@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Item Info</title>
+  <!-- Fonts -->
+  <link href="@{https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <!-- CSS -->
+  <link th:href="@{/css/stylesitem.css}" rel="stylesheet">
+  <meta name="robots" content="noindex,follow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+  <main class="container" th:object="${item}">
+    <div th:if="${item == null}">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"> This Item doesn't exist</div>
+  </div>
+    <div class="left-column">
+
+      <img th:if="${item != null}" data-image="red" class="active" th:src="@{${item.imageUrl}}" alt="">
+    </div>
+
+
+    <!-- Right Column -->
+    <div class="right-column" th:if="${item != null}">
+      
+
+      <!-- Product Description -->
+      <div class="product-description">
+        <span th:text="${item.category.getDisplayValue()}">Catagory</span>
+        <h1 th:text="${item.name}">name</h1>
+        <p th:text="${item.description}">description</p>
+      </div>
+
+      <!-- Product Configuration -->
+      <div class="product-configuration">
+
+        <!-- Product Color -->
+        <div class="product-color">
+          <span th:text="${item.stock}">Stock</span>
+        </div>
+
+        <div class="cable-choose">
+          <a th:href="@{/Customer/Wishlist/Add/${item.id}}"><button>Add to Wishlist</button></a>
+          <a th:href="@{/Customer}"><button>Go Back</button></a>
+
+
+        </div>
+      </div>
+
+
+      <div class="product-price">
+        <span th:text="${item.price}">price</span>
+        <a th:href="@{/Customer/Cart/Add/${item.id}}" class="cart-btn">Add to cart</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+  <script src="script.js" charset="utf-8"></script>
+</body>
+
+</html>

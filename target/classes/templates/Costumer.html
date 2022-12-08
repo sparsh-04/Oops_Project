@@ -161,7 +161,7 @@
           </li>
           <li>
             <a
-              href="#"
+              th:href="@{/signup}"
               class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <svg
@@ -234,17 +234,15 @@
         <button class="w-full max-w-full px-3 mb-6 lg:w-1/3 sm:flex-none shadow-lg " th:each="item: ${items}">
           <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
               <div class="relative">
-                  <a class="block  rounded-2xl">
-                      <img th:src="@{${item.imageUrl}}" alt="img-blur-shadow" class="max-w-full shadow-soft-2xl h-80 rounded-2xl hover:opacity-60">
+                  <a class="block rounded-2xl" th:href="@{/Customer/Item?id={id}(id=${item.code})}">
+                      <img th:src="@{${item.imageUrl}}" alt="img-blur-shadow" class="max-w-full h-80 rounded-2xl hover:opacity-60">
                   </a>
               </div>
               <div class="flex-auto px-1 pt-6">
-                  <a href="javascript:;">
-                      <h5 th:value="${item.name}"></h5>
-                  </a>
+                  <h5 th:text="${item.name}"></h5>
 
-                  <div class="flex items-center justify-between ">
-                      <h1 class="font-bold" th:value="${item.price}">Rs 69</h1>
+                  <div class="flex items-center">
+                    <h1 class="mr-5">Rs. </h1><h1 class="font-bold" th:text="${item.price}"></h1>
                   </div>
               </div>
           </div>

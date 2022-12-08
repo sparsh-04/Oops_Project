@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,24 +17,19 @@
       <button>
         <img
           class="w-9 h-9 rounded-full object-cover bottom-4 right-10 absolute"
-          src="/profile_placeholder.jpg"
+          th:src="@{/images/profile_placeholder.jpg}"
           alt="profile placeholder"
         />
       </button>
       <button
         class="bg-slate-700 rounded-3xl w-16 h-8 px-3 ml-20 text-white hover:bg-slate-200 hover:text-black"
       >
-        <a th:href="@{Manager}"> Home</a>
+        <a th:href="@{/Manager}"> Home</a>
       </button>
       <button
         class="bg-slate-700 rounded-3xl w-28 h-8 px-3 mr-10 ml-12 text-white hover:bg-slate-200 hover:text-black"
       >
-        <a th:href="@{Add-Item}">Add Item</a>
-      </button>
-      <button
-        class="bg-slate-700 rounded-3xl w-44 h-8 px-3 mr-10 ml-3 text-white hover:bg-slate-200 hover:text-black"
-      >
-        Update Product Info
+        <a th:href="@{/Manager/Add-Item}">Add Item</a>
       </button>
       <div class="text-center">
         <button
@@ -162,27 +157,7 @@
                 <span class="flex-1 ml-3 whitespace-nowrap">Sign Out</span>
               </a>
             </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <span class="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
-              </a>
-            </li>
+
           </ul>
         </div>
       </div>

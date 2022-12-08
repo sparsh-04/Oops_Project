@@ -1,7 +1,5 @@
 package com.example.demo.Controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -10,6 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.example.demo.DTO.UserDTO;
 import com.example.demo.Model.Customer;
 import com.example.demo.Model.Rank;
@@ -22,11 +22,21 @@ import jakarta.validation.Valid;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserRepo userRepo;
+  @Autowired
+  private UserRepo userRepo;
 
   @Autowired
   private CustomerRepo customerRepo;
+
+  @GetMapping("/Admin/DeleteUser")
+  public String deleteUser(@RequestParam(required = false, value = "id") Long id){
+    if(id != null){
+        userRepo.deleteById(id);
+        return "redirect:/Admin/Users?deleteSuccess";
+    } else {
+        return "redirect:/Admin/Users?noexist";
+    }
+  }
 
   @PostMapping("/Admin/AddUser/process")
   public String processRegistration (@Valid @ModelAttribute("user") UserDTO userDto, BindingResult result, Model model){
@@ -56,7 +66,7 @@ public class UserController {
       if(savedUser.getRank().getDisplayValue().equals(Rank.CUSTOMER.getDisplayValue())){
           customerRepo.save(new Customer(savedUser.getId()));
       }
-      return "redirect:/Admin/Users";
+      return "redirect:/Admin/Users?addSuccess";
   }
 
 }

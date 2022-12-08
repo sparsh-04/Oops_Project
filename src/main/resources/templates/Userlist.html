@@ -14,26 +14,37 @@
 <body>
     <nav id="headernav" class="flex absolute bg-slate-400 pt-4 h-16 w-full top-5">
         <button>
-            <img class="w-9 h-9 rounded-full object-cover bottom-4 right-10 absolute" src="/profile_placeholder.jpg"
+            <img class="w-9 h-9 rounded-full object-cover bottom-4 right-10 absolute" th:src="@{/images/profile_placeholder.jpg}"
                 alt="profile placeholder" />
         </button>
         <button class="bg-slate-700 rounded-3xl w-16 h-8 px-3 ml-20 text-white hover:bg-slate-200 hover:text-black">
             <a th:href="@{/Admin}"> Home</a>
         </button>
-        <button
-            class="bg-slate-700 rounded-3xl w-20 h-8 px-3 mr-10 ml-12 text-white hover:bg-slate-200 hover:text-black" th:href="@{/Customer/Wishlist}">
-            Wishlist
-        </button>
-        <button
-            class="bg-slate-700 rounded-3xl w-24 h-8 px-3 mr-10 ml-3 text-white hover:bg-slate-200 hover:text-black" th:href="@{/Customer/Cart}">
-            My cart
-        </button>
 
     </nav>
 
+    <div>
+        <div th:if="${param.deleteSuccess}">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded"> User Deleted Successfully </div>
+        </div>
+    
+        <div th:if="${param.addSuccess}">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded"> User Added Successfully </div>
+        </div>
+    
+        <div th:if="${param.noexist}">
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"> User doesn't exist</div>
+        </div>
+        </div>
+    
 
+    <script>
+        function rowClicked(value) {
+            location.href = "/Admin/User?id=" + value;
+        }
+    </script>
 
-    <table class="w-full whitespace-no-wrap mt-28 ml-20 mr-20">
+    <table class="w-full whitespace-no-wrap mt-28 ml-5 mr-20">
         <thead>
             <tr
                 class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
@@ -44,9 +55,9 @@
             </tr>
         </thead>
         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-            <tr class="text-gray-700 dark:text-gray-400" th:each="user: ${users}">
-                <a th:href="@{/Manager/User/${user.id}}">
+            <tr class="text-gray-700 dark:text-gray-400" th:each="user: ${users}" th:onclick="'javascript:rowClicked(\'' + ${user.id} + '\');'" style="cursor: pointer">
                 <td class="px-4 py-3">
+                    
                     <div class="flex items-center text-sm">
                         <!-- Avatar with inset shadow -->
                         <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -63,37 +74,8 @@
                     email
                 </td>
                 <td class=" py-3 text-xs"  th:text="${user.rank}">
-                    <span
-                        class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                        Manager
-                    </span>
                 </td>
-
-            </tr>
-            <tr class="text-gray-700 dark:text-gray-400">
-                <td class="px-4 py-3">
-                    <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-                        <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-
-                            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                        </div>
-                        <div>
-                            <p class="font-semibold">Hans Burger</p>
-
-                        </div>
-                    </div>
-                </td>
-                <td class="px-4 py-3 text-sm">
-                    email
-                </td>
-                <td class=" py-3 text-xs">
-                    <span
-                        class="px-2  py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
-
-                    </span>
-                </td>
-
+                </a>
             </tr>
         </tbody>
     </table>

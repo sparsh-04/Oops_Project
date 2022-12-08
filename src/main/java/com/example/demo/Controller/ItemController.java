@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.DTO.ItemDTO;
 import com.example.demo.Model.Item;
@@ -18,6 +20,16 @@ public class ItemController {
 
   @Autowired
   private ItemRepo itemRepo;
+
+  @GetMapping("/Manager/DeleteItem")
+  public String deleteUser(@RequestParam(required = false, value = "id") Long id){
+    if(id != null){
+        itemRepo.deleteById(id);
+        return "redirect:/Manager?deleteSuccess";
+    } else {
+        return "redirect:/Manager?noexist";
+    }
+  }
   
   @PostMapping(value = "/Add-Item/process")
   public String processAddItem(@Valid @ModelAttribute("item") ItemDTO itemDto, BindingResult result, Model model){

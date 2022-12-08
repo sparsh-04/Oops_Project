@@ -48,7 +48,7 @@ public class LoginController {
         User newUser = new User();
         String encodedpassword = encoder.encode(userDto.getPassword());
         newUser.setPassword(encodedpassword);
-        newUser.setRank(Rank.ADMIN);
+        newUser.setRank(Rank.CUSTOMER);
         newUser.setPhone(userDto.getPhone());
         newUser.setEmail(userDto.getEmail());
         newUser.setName(userDto.getName());
