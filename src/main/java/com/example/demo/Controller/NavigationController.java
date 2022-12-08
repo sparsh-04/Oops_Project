@@ -121,4 +121,9 @@ public class NavigationController {
 
     return "userinfo";
   }
+
+  @GetMapping("/Customer/Cart")
+  public String showCart(Model model){
+    return "cart";
+  }
 }
