@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,11 @@ import com.example.demo.DTO.CartDTO;
 import com.example.demo.DTO.CartWrapper;
 import com.example.demo.DTO.ItemDTO;
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.Model.Customer;
 import com.example.demo.Model.CartItem;
 import com.example.demo.Model.Customer;
 import com.example.demo.Model.Item;
 import com.example.demo.Model.User;
-import com.example.demo.Repository.CustomerRepo;
 import com.example.demo.Repository.ItemRepo;
 import com.example.demo.Repository.UserRepo;
 
@@ -32,6 +34,9 @@ public class NavigationController {
 
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private CustomerRepo customerRepo;
 
     @Autowired
     private CustomerRepo customerRepo;
@@ -164,6 +169,15 @@ public class NavigationController {
     model.addAttribute("items", cartDtos);
 
     return "cart";
+  }
+
+  @GetMapping("/wallet")
+  public String showwallet(Model model){
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+  User user = userRepo.findByEmail(auth.getName());
+    Customer customer = customerRepo.findById(user.getId()).orElse(null);
+    model.addAttribute("wallet", customer.getWalletAmount());
+    return "wallet";
   }
 
   @GetMapping("/Profile")

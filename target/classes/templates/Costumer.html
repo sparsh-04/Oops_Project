@@ -235,7 +235,7 @@
           <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
               <div class="relative">
                   <a class="block rounded-2xl" th:href="@{/Customer/Item?id={id}(id=${item.code})}">
-                      <img th:src="@{${item.imageUrl}}" alt="img-blur-shadow" class="max-w-full h-80 rounded-2xl hover:opacity-60">
+                      <img th:src="@{${item.imageUrl}}" alt="img-blur-shadow" class="max-w-full h-80 object-cover overflow-hidden rounded-2xl hover:opacity-60">
                   </a>
               </div>
               <div class="flex-auto px-1 pt-6">
