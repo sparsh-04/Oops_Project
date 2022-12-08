@@ -5,60 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./js/country-states.js"></script>
-    <title>Profile</title>
+
+    <title>User</title>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-blue-500 text-justify-center mx-8 my-8 font-bold ... h-8 .text-4xl">
-            <font size="+3"> Your Profile </font> <button class="bg-gray-50 hover:bg-grey-500 w-8 h-8 rounded-md text-black font-bold  border "><a href="Edit_Profile.html"><img src="Edit.png" alt="Edit" ></a></button>
-</h1>
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+
+<section class="pt-16 bg-blueGray-50">
+<div class="w-full lg:w-4/12 px-4 mx-auto" th:object="${user}">
+  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
+    <div class="px-6">
+      <div class="flex flex-wrap justify-center">
+        <div class="w-full px-4 flex justify-center" th:if="${user != null}">
+          <div class="relative">
+            <img alt="..." th:src="@{/images/profile_placeholder.jpg}" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
+          </div>
+        </div>
+       
+      <div th:if="${user == null}">
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"> This user doesn't exist</div>
+      </div>
+      
+      <div class="text-center mt-12" th:if="${user != null}">
+        <h3 class="text-xl font-semibold leading-normal mt-3 text-blueGray-700 mb-2" th:text="${user.name}">
+          User Name
+        </h3>
+        <h3 class="text-xl font-semibold leading-normal mt-3 text-blueGray-700 mb-2" th:text="${user.rank.getDisplayValue()}">
+            Rank
+        </h3>
+        
+        <div class="mb-2 text-blueGray-600 mt-10" th:text="${user.email}">
+          Email
+        </div>
+        <div class="mb-2 text-blueGray-600" th:text="${user.phone}">
+          phone number
+        </div>
+        <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase" th:each="address: ${user.addresses}">
+            <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400" th:text="${address}"></i>
+            Address
+        </div>
+        <div class="text-sm leading-normal mt-0  mb-2 text-blueGray-400 font-bold uppercase">
+           <a th:href="@{/Customer}">
+           <button class=" rounded-md bg-black px-5 text-white h-10 hover:bg-slate-300 hover:text-black">
+            Go back
+           </button>
+           </a>
+        </div>
+        
+      </div>
+      <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+        <div class="flex flex-wrap justify-center">
+          
+        </div>
+      </div>
     </div>
-
-    <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-          <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal Details</p>
-        </div>
-        <div class="border-t border-gray-200 " >
-          <dl>
-            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">Full name</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Sparsh Khandelwal</dd>
-            </div>
-            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">Email Id</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">sparshkhandelwal29@gmail.com</dd>
-            </div>
-            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">Mobile Number</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">9109081130</dd>
-            </div>
-            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">Wallet Balance</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">120,000 Rs</dd>
-            </div>
-            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">Address</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">49 B <br> Janki Nagar <br>Chuna Bhatti <br> Bhopal <br>Madhya Pradesh <br> Pincode: 462016 <button class="bg-gray-50 hover:bg-grey-500 text-black font-bold py-2 px-4 border rounded"><a href="Edit_Profile.html"><img class="w-6 h-6 rounded-md overflow-hidden " src="Edit1.png" alt=""></a></button></dd>
-            </div>
-            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500"></dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Add Address</button></dd>
-            </div>
-            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500"></dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded my-7 mx-10">Save Changes</button>
-                </dd>
-              </div>
-            <hr>
-          </dl>
-        </div>
+  </div>
+</div>
+<footer class="relative  pt-8 pb-6 mt-8">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap items-center md:justify-between justify-center">
+      <div class="w-full md:w-6/12 px-4 mx-auto text-center">
+        
       </div>
-      <div>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded my-7 mx-10">Cart</button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded my-7 mx-10">Wishlist</button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded my-7 mx-10">Order History</button>
-      </div>
-
+    </div>
+  </div>
+</footer>
+</section>
 </body>
 </html>

@@ -32,7 +32,13 @@ public class CartItemConverter implements AttributeConverter<List<CartItem>, Str
     List<CartItem> outList = new ArrayList<CartItem>();
     List<String> tempList = Arrays.asList(string.split(ITEM_SPLIT_CHAR));
     for (String item : tempList) {
-      outList.add(new CartItem(item.split(DATA_SPLIT_CHAR)));
+      String[] lst = item.split(DATA_SPLIT_CHAR);
+      for(String i: lst){
+        if(i.equals("")){
+          return outList;
+        }
+      }
+      outList.add(new CartItem(lst));
     }
     return outList;
   }

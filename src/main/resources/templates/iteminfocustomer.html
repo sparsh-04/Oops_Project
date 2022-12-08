@@ -45,7 +45,6 @@
         </div>
 
         <div class="cable-choose">
-          <a th:href="@{/Customer/Wishlist/Add/${item.id}}"><button>Add to Wishlist</button></a>
           <a th:href="@{/Customer}"><button>Go Back</button></a>
 
 
@@ -55,7 +54,7 @@
 
       <div class="product-price">
         <span th:text="${item.price}">price</span>
-        <a th:href="@{/Customer/Cart/Add/${item.id}}" class="cart-btn">Add to cart</a>
+        <a th:href="@{/Customer/Cart/Add?itemId={id}(id=${item.code})}" class="cart-btn">Add to cart</a>
       </div>
     </div>
   </main>
