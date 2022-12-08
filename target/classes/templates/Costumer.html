@@ -19,19 +19,24 @@
       />
     </button>
     <button
-      class="bg-slate-700 rounded-3xl w-16 h-8 px-3 ml-20 text-white hover:bg-slate-200 hover:text-black"
+      class="bg-slate-700 rounded-3xl w-16 h-8 px-3 ml-20 mr-3 text-white hover:bg-slate-200 hover:text-black"
     >
       <a th:href="@{/Customer}"> Home</a>
     </button>
     <a th:href="@{/Customer/Cart}">
     <button
-      class="bg-slate-700 rounded-3xl w-24 h-8 px-3 mr-10 ml-3 text-white hover:bg-slate-200 hover:text-black"
+      class="bg-slate-700 rounded-3xl w-24 h-8 px-3 mr-6 ml-3 text-white hover:bg-slate-200 hover:text-black"
     >
       My cart
     </button></a>
+    <a href="">
+      <button class="bg-slate-700 rounded-3xl w-24 h-8 px-3 mr-10 ml-3 text-white hover:bg-slate-200 hover:text-black">
+        Wallet
+      </button>
+    </a>
     <div class="text-center">
       <button
-        class="text-white focus:ring-4 focus:ring-blue-300 absolute left-1 font-medium rounded-lg text-sm ml-3 w-10 h-8 px-2 object-cover hover:bg-slate-500  dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        class="text-white focus:ring-4 focus:ring-blue-300 absolute left-1 font-medium rounded-lg text-sm ml-3 w-10 h-8 px-2 object-cover hover:bg-slate-500  dark:hover:bg-slate-700 focus:outline-none dark:focus:ring-blue-800"
         type="button"
         data-drawer-target="drawer-navigation"
         data-drawer-show="drawer-navigation"
@@ -235,7 +240,7 @@
           <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
               <div class="relative">
                   <a class="block rounded-2xl" th:href="@{/Customer/Item?id={id}(id=${item.code})}">
-                      <img th:src="@{${item.imageUrl}}" alt="img-blur-shadow" class="max-w-full h-80 object-cover overflow-hidden rounded-2xl hover:opacity-60">
+                      <img th:src="@{${item.imageUrl}}" alt="img-blur-shadow" class="max-w-full h-80 ml-16 object-cover overflow-hidden rounded-2xl hover:opacity-60">
                   </a>
               </div>
               <div class="flex-auto px-1 pt-6">
