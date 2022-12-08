@@ -23,7 +23,7 @@
 
     </nav>
 
-    <div>
+    <div class="absolute left-96 px-36 top-24">
         <div th:if="${param.deleteSuccess}">
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded"> User Deleted Successfully </div>
         </div>
@@ -35,7 +35,7 @@
         <div th:if="${param.noexist}">
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"> User doesn't exist</div>
         </div>
-        </div>
+    </div>
     
 
     <script>
@@ -44,7 +44,7 @@
         }
     </script>
 
-    <table class="w-full whitespace-no-wrap mt-28 ml-5 mr-20">
+    <table class="w-full whitespace-no-wrap mt-40 ml-5 mr-20">
         <thead>
             <tr
                 class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
