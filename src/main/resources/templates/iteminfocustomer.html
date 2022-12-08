@@ -20,8 +20,7 @@
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"> This Item doesn't exist</div>
   </div>
     <div class="left-column">
-
-      <img th:if="${item != null}" data-image="red" class="active" th:src="@{${item.imageUrl}}" alt="">
+      <img th:if="${item != null}" data-image="red" class="active h-72 w-72 object-cover" th:src="@{${item.imageUrl}}" alt="">
     </div>
 
 
@@ -41,7 +40,11 @@
 
         <!-- Product Color -->
         <div class="product-color">
-          <span th:text="${item.stock}">Stock</span>
+          <h1>Stock Remaining: </h1><span th:text="${item.stock}">Stock</span>
+        </div>
+
+        <div class="product-color">
+          <span th:text="${item.price}">Stock</span>
         </div>
 
         <div class="cable-choose">

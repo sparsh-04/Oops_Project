@@ -17,11 +17,11 @@
       <img class="w-9 h-9 rounded-full object-cover bottom-4 right-10 absolute" th:src="@{/images/profile_placeholder.jpg}"
         alt="profile placeholder" />
     </button>
-    <button class="bg-slate-700 rounded-3xl w-16 h-8 px-3 ml-20 text-white hover:bg-slate-200 hover:text-black">
+    <button class="bg-slate-700 rounded-3xl w-16 h-8 px-3 ml-10 text-white hover:bg-slate-200 hover:text-black">
       <a th:href="@{/Admin}"> Home</a>
     </button>
     <a th:href="@{/Admin/Users}">
-    <button class="bg-slate-700 rounded-3xl w-24 h-8 px-3 mr-10 ml-3 text-white hover:bg-slate-200 hover:text-black">
+    <button class="bg-slate-700 rounded-3xl w-24 h-8 px-3 mr-12 ml-12 text-white hover:bg-slate-200 hover:text-black">
       Users
     </button>
     </a>
@@ -35,7 +35,7 @@
 
   <!-- sidenav  -->
   <aside
-    class="absolute font-bold bg-slate-200  mt-32 pt-4 pr-4 inset-y-0 flex-wrap items-center justify-between block overflow-y-auto antialiased transition-transform duration-200 -translate-x-full  border-0 shadow-xl dark:shadow-none dark:bg-slate-850 max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0 xl:translate-x-0"
+    class="absolute font-bold bg-slate-700  mt-32 pt-4 pr-4 inset-y-0 flex-wrap items-center justify-between block overflow-y-auto antialiased transition-transform duration-200 -translate-x-full  border-0 shadow-xl dark:shadow-none dark:bg-slate-850 max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0 xl:translate-x-0"
     aria-expanded="false">
 
     <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
@@ -46,50 +46,17 @@
               class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
               <i class="relative top-0 text-sm leading-normal text-blue-500 ni ni-tv-2"></i>
             </div>
-            <h1 class="  text-xl font-bold leading-tight uppercase text-purple-600 underline opacity-60">Dashboard</h1>
+            <h1 class="  text-xl font-bold mb-5 leading-tight uppercase text-white opacity-60">Dashboard</h1>
           </a>
         </li>
-
-        <li class="mt-0.5 w-full">
-          <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-            th:href="@{/pages/tables}">
-            <div
-              class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-              <i class="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"></i>
-            </div>
-            <span class="ml-1 text-lg duration-300 opacity-100 pointer-events-none ease">Daily Report</span>
-          </a>
-        </li>
-
-        <li class="mt-0.5 w-full">
-          <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-            th:href="@{/pages/billing}">
-            <div
-              class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center fill-current stroke-0 text-center xl:p-2.5">
-              <i class="relative top-0 text-sm leading-normal text-emerald-500 ni ni-credit-card"></i>
-            </div>
-            <span class="ml-1 text-lg duration-300 opacity-100 pointer-events-none ease">Monthly Report</span>
-          </a>
-        </li>
-
-        <li class="mt-0.5 w-full">
-          <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-            href="@{/pages/virtual-reality}">
-            <div
-              class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-              <i class="relative top-0 text-sm leading-normal text-cyan-500 ni ni-app"></i>
-            </div>
-            <span class="ml-1 text-lg duration-300 opacity-100 pointer-events-none ease">Yearly Report</span>
-          </a>
-        </li>
-
-        
+        <hr>
 
         <li class="w-full mt-4">
           <h6
-            class="pl-14 ml-2 text-xl font-bold leading-tight uppercase text-purple-600 underline dark:text-white opacity-60">
+            class="pl-14 mb-4  lg\:mb-8 text-xl font-bold leading-tight uppercase text-white dark:text-white opacity-60">
             Account pages</h6>
         </li>
+        <hr>
 
         <li class="mt-0.5 w-full">
           <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
@@ -125,7 +92,7 @@
         </li>
       </ul>
       <a th:href="@{/Manager}">
-      <button class="w-40 rounded-md h-20 mt-8 ml-10 hover:bg-slate-300 text-2xl bg-slate-400">
+      <button class="w-48 rounded-md h-12 mt-8 ml-10 hover:bg-slate-300 text-2xl bg-slate-400">
         Manager Page
       </button>
       </a>
@@ -137,7 +104,7 @@
   <!-- end sidenav -->
 
   <!-- row 1 -->
-  <div class="flex flex-wrap -mx-3 ml-80 mt-32">
+  <div class="flex flex-wrap  ml-80 mt-32">
     <!-- card1 -->
     <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
       <div
@@ -147,12 +114,12 @@
             <div class="flex-none w-2/3 max-w-full px-3">
               <div>
                 <p
-                  class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">
+                  class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-black dark:opacity-60">
                   Today's Money</p>
-                <h5 class="mb-2 font-bold dark:text-white">$53,000</h5>
+                <h5 class="mb-2 font-bold dark:text-black">$53,000</h5>
                 <p class="mb-0 dark:text-white dark:opacity-60">
                   <span class="text-sm font-bold leading-normal text-emerald-500">+55%</span>
-                  since yesterday
+                
                 </p>
               </div>
             </div>
@@ -176,9 +143,9 @@
             <div class="flex-none w-2/3 max-w-full px-3">
               <div>
                 <p
-                  class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">
+                  class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-black dark:opacity-60">
                   Today's Users</p>
-                <h5 class="mb-2 font-bold dark:text-white">2,300</h5>
+                <h5 class="mb-2 font-bold dark:text-black">2,300</h5>
                 <p class="mb-0 dark:text-white dark:opacity-60">
                   <span class="text-sm font-bold leading-normal text-emerald-500">+3%</span>
                   since last week
@@ -188,7 +155,7 @@
             <div class="px-3 text-right basis-1/3">
               <div
                 class="inline-block w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-red-600 to-orange-600">
-                <i class="ni leading-none ni-world text-lg relative top-3.5 text-white"></i>
+                <i class="ni leading-none ni-world text-lg relative top-3.5 text-black"></i>
               </div>
             </div>
           </div>
@@ -205,9 +172,9 @@
             <div class="flex-none w-2/3 max-w-full px-3">
               <div>
                 <p
-                  class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">
+                  class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-black dark:opacity-60">
                   New Clients</p>
-                <h5 class="mb-2 font-bold dark:text-white">+3,462</h5>
+                <h5 class="mb-2 font-bold dark:text-black">+3,462</h5>
                 <p class="mb-0 dark:text-white dark:opacity-60">
                   <span class="text-sm font-bold leading-normal text-red-600">-2%</span>
                   since last quarter
@@ -234,9 +201,9 @@
             <div class="flex-none w-2/3 max-w-full px-3">
               <div>
                 <p
-                  class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">
+                  class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-black dark:opacity-60">
                   Sales</p>
-                <h5 class="mb-2 font-bold dark:text-white">$103,430</h5>
+                <h5 class="mb-2 font-bold dark:text-black">$103,430</h5>
                 <p class="mb-0 dark:text-white dark:opacity-60">
                   <span class="text-sm font-bold leading-normal text-emerald-500">+5%</span>
                   than last month
@@ -357,7 +324,7 @@
     </div>
 
     <div class="text-center text-gray-700 p-4" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2021 Copyright:
+      © 2022:
       <a class="text-gray-800" href="https://tailwind-elements.com/">WIND CART</a>
     </div>
   </footer>
