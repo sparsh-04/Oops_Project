@@ -1,13 +1,13 @@
-package com.example.demo.chart;
+// package com.example.demo.chart;
  
-import java.util.List;
-import java.util.Map;
+// import java.util.List;
+// import java.util.Map;
  
-public class CanvasjsChartDaoImpl implements CanvasjsChartDao {
+// public class CanvasjsChartDaoImpl implements CanvasjsChartDao {
  
-	@Override
-	public List<List<Map<Object, Object>>> getCanvasjsChartData() {
-		return CanvasjsChartData.getCanvasjsDataList();
-	}
+// 	@Override
+// 	public List<List<Map<Object, Object>>> getCanvasjsChartData() {
+// 		return CanvasjsChartData.getCanvasjsDataList();
+// 	}
  
-}   
+// }   

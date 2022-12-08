@@ -1,10 +1,10 @@
-package com.example.demo.chart;
+// package com.example.demo.chart;
  
-import java.util.List;
-import java.util.Map;
+// import java.util.List;
+// import java.util.Map;
  
-public interface CanvasjsChartDao {
+// public interface CanvasjsChartDao {
  
-	List<List<Map<Object, Object>>> getCanvasjsChartData();
+// 	List<List<Map<Object, Object>>> getCanvasjsChartData();
  
-}
+// }

@@ -22,6 +22,7 @@ import com.example.demo.Model.CartItem;
 import com.example.demo.Model.Customer;
 import com.example.demo.Model.Item;
 import com.example.demo.Model.User;
+import com.example.demo.Repository.CustomerRepo;
 import com.example.demo.Repository.ItemRepo;
 import com.example.demo.Repository.UserRepo;
 
@@ -34,9 +35,6 @@ public class NavigationController {
 
     @Autowired
     private UserRepo userRepo;
-
-    @Autowired
-    private CustomerRepo customerRepo;
 
     @Autowired
     private CustomerRepo customerRepo;
